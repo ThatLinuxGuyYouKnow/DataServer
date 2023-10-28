@@ -6,10 +6,23 @@ const paystack_secret_key = 'sk_test_59cff139324b201a3f4bff60dc0675f9a281edb4';
 
 app.use(bodyParser.json());
 
-app.post('/create_account', (req, res) => {
+app.post('/webhook', (req, res) => {
     const amount = req.body.amount;  // get the payment amount from the request body
 const userPhoneNumberAndEmailConcat= req.body.phone +"prestigiousDataPlugServices@gmail.com"
     // Call the Paystack API to initialize a transaction
+    const event = req.body;
+
+    // Process the webhook event
+    if (event && event.type === 'message') {
+      const message = event.message;
+      const sender = event.sender;
+  
+      // Add your logic here to handle the message event
+      console.log(`Received message from ${sender}: ${message}`);
+    }
+  
+    // Send a response back to the WhatsApp API
+    res.sendStatus(200);
     const options = {
         url: 'https://api.paystack.co/transaction/initialize',
         headers: {
