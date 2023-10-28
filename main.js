@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const request = require('request');
 const bodyParser = require('body-parser');
-const paystack_secret_key = 'sk_test_59cff139324b201a3f4bff60dc0675f9a281edb4'
+const paystack_secret_key = 'sk_test_59cff139324b201a3f4bff60dc0675f9a281edb4';
 
 app.use(bodyParser.json());
 
